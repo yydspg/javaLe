@@ -73,7 +73,7 @@ public class EmployeeController {
      * @return
      */
     @PostMapping("/logout")
-    @ApiOperation("员工退出!!!")
+    @ApiOperation("员工退出")
     public Result<String> logout() {
         return Result.success();
     }
@@ -98,4 +98,16 @@ public class EmployeeController {
         PageResult pageResult = employeeService.pageQuery(employeePageQueryDTO);
         return Result.success(pageResult);
     }
+
+    /**
+     * 更改员工状态
+     * @param status
+     * @param id
+     */
+    @GetMapping
+    @ApiOperation("员工状态更改")
+    public void startOrStop(Integer status,Long id){
+        employeeService.startOrStop(status,id);
+    }
+
 }
