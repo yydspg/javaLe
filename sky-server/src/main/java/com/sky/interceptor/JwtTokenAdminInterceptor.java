@@ -1,6 +1,7 @@
 package com.sky.interceptor;
 
 import com.sky.constant.JwtClaimsConstant;
+import com.sky.context.BaseContext;
 import com.sky.properties.JwtProperties;
 import com.sky.utils.JwtUtil;
 import io.jsonwebtoken.Claims;
@@ -45,6 +46,8 @@ public class JwtTokenAdminInterceptor implements HandlerInterceptor{
             Claims claims = JwtUtil.parseJWT(jwtProperties.getAdminSecretKey(),token);
             long empId = Long.valueOf(claims.get(JwtClaimsConstant.EMP_ID).toString());
             log.info("current user id :{}",empId);
+            //3.设置ThreadLocal 的值!!!
+            BaseContext.setCurrentId(empId);
             //discharged
             return true;
         } catch (NumberFormatException e) {
