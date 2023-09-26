@@ -7,7 +7,7 @@ sky:
     username: root
     password: 1234
   alioss:
-    endpoint: oss-cn-chengdu.aliyuncs.com
-    access-key-id: LTAI5tCyAYXC5geNze36rtUk
-    access-key-secret: 68teXrfx9yVuOG271PR40pdah35RoI
-    bucket-name: le-repo
+    endpoint:
+    access-key-id:
+    access-key-secret:
+    bucket-name:
