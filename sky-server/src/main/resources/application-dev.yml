@@ -11,3 +11,7 @@ sky:
     access-key-id:
     access-key-secret:
     bucket-name:
+  redis:
+    host: 192.168.152.133
+    port: 6379
+    database: 0
