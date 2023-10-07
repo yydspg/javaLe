@@ -17,7 +17,7 @@ import java.util.UUID;
 
 @Slf4j
 @RequestMapping("/admin/common")
-@Api("通用接口")
+@Api(tags = "通用接口")
 @RestController
 public class CommonController {
 

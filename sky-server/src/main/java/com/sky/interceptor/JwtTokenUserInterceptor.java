@@ -6,7 +6,6 @@ import com.sky.properties.JwtProperties;
 import com.sky.utils.JwtUtil;
 import io.jsonwebtoken.Claims;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -21,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Slf4j
 @Component
-public class JwtTokenAdminInterceptor implements HandlerInterceptor{
+public class JwtTokenUserInterceptor implements HandlerInterceptor{
     @Resource
     private JwtProperties jwtProperties;
 
@@ -40,16 +39,16 @@ public class JwtTokenAdminInterceptor implements HandlerInterceptor{
             return true;
         }
         //1.从request 获取令牌
-        String token = request.getHeader(jwtProperties.getAdminTokenName());
+        String token = request.getHeader(jwtProperties.getUserTokenName());
 
         //2.校验令牌
         try {
             log.info("jwt verify {}!!!",token);
-            Claims claims = JwtUtil.parseJWT(jwtProperties.getAdminSecretKey(),token);
-            long empId = Long.valueOf(claims.get(JwtClaimsConstant.EMP_ID).toString());
-            log.info("current user id :{}",empId);
+            Claims claims = JwtUtil.parseJWT(jwtProperties.getUserSecretKey(),token);
+            long userId = Long.valueOf(claims.get(JwtClaimsConstant.USER_ID).toString());
+            log.info("current user id :{}",userId);
             //3.设置ThreadLocal 的值!!!
-            BaseContext.setCurrentId(empId);
+            BaseContext.setCurrentId(userId);
             //discharged
             return true;
         } catch (NumberFormatException e) {

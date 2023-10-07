@@ -38,5 +38,6 @@ public class User implements Serializable {
     private String avatar;
 
     //注册时间
+
     private LocalDateTime createTime;
 }
