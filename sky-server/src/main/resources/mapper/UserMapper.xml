@@ -5,6 +5,6 @@
         <!--TODO 理解返回主键的代码-->
         <insert id="insert" useGeneratedKeys="true" keyProperty="id">
             insert into user (openid, name, phone, sex, id_number, avatar, create_time) VALUE
-            (#{openid}, #{name}, #{phone}, #{sex}, #{idNumber}, #{avatar}, #{create_time})
+            (#{openid}, #{name}, #{phone}, #{sex}, #{idNumber}, #{avatar}, #{createTime})
         </insert>
 </mapper>
