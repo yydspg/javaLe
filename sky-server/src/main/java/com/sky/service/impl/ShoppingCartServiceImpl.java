@@ -10,11 +10,13 @@ import com.sky.mapper.SetmealMapper;
 import com.sky.mapper.ShoppingCartMapper;
 import com.sky.service.ShoppingCartService;
 import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Service
 public class ShoppingCartServiceImpl implements ShoppingCartService {
     @Resource
     private ShoppingCartMapper shoppingCartMapper;
@@ -35,7 +37,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         if(list!=null&&!list.isEmpty()){
             ShoppingCart te = list.get(0);
             te.setNumber(te.getNumber()+1); //update shopping_cart set number = ? where id = ?
-            shoppingCartMapper.updateById(te);
+            shoppingCartMapper.updateNumberById(te);
         }else{
             //不存在,新增
             //判断添加的数据是菜品还是套餐
